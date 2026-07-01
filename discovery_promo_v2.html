@@ -179,6 +179,9 @@ body{background:var(--gray-50);font-family:'Barlow',-apple-system,BlinkMacSystem
         <button class="sc-btn sc-btn-reveal" id="scRevealBtn" onclick="revealAll()">Reveal all</button>
         <button class="sc-btn sc-btn-reset" id="scResetBtn" onclick="resetScratch()">Try again ↺</button>
       </div>
+      <div style="padding:0 1.1rem 1.1rem;text-align:center;">
+        <div style="font-size:9.5px;color:var(--gray-500);line-height:1.5;font-family:'Barlow',sans-serif;" id="scNotice">If a prize is out of stock, an alternative gift of equal value may be provided.</div>
+      </div>
 
     </div>
   </div>
@@ -238,6 +241,7 @@ const L = {
     tabScratch:'🎁 Gift',tabCoupon:'🏷 Coupon',tabStores:'📍 Stores',
     scLabel:'Scratch & Win',scTitle:'SCRATCH TO REVEAL',scSub:'Show result to staff at checkout',
     scProg:p=>`${p}% scratched`,scReveal:'Reveal all',scReset:'Try again ↺',
+    scNotice:'If a prize is out of stock, an alternative gift of equal value may be provided.',
     scWon:'You won!',scResNote:'Show this screen to staff<br>to receive your gift',
     legendTitle:'Prize breakdown',
     p1:'🧦 Brand socks',p2:'🧴 Sunscreen 50ml',p3:'☂️ Umbrella',
@@ -263,6 +267,7 @@ const L = {
     tabScratch:'🎁 禮品',tabCoupon:'🏷 優惠券',tabStores:'📍 門市',
     scLabel:'刮刮樂',scTitle:'刮開查看您的禮品',scSub:'結帳時向店員出示結果',
     scProg:p=>`已刮開 ${p}%`,scReveal:'全部揭開',scReset:'再試一次 ↺',
+    scNotice:'若贈品庫存不足，將提供等值替代贈品。',
     scWon:'恭喜中獎！',scResNote:'請向店員出示此頁面<br>領取您的禮品',
     legendTitle:'獎品內容',
     p1:'🧦 品牌襪子',p2:'🧴 防曬乳 50ml',p3:'☂️ 雨傘',
@@ -288,6 +293,7 @@ const L = {
     tabScratch:'🎁 礼品',tabCoupon:'🏷 优惠券',tabStores:'📍 门店',
     scLabel:'刮刮卡',scTitle:'刮开查看您的礼品',scSub:'结账时向店员出示结果',
     scProg:p=>`已刮开 ${p}%`,scReveal:'全部揭开',scReset:'再试一次 ↺',
+    scNotice:'若赠品库存不足，将提供等值替代赠品。',
     scWon:'恭喜中奖！',scResNote:'请向店员出示此页面<br>领取您的礼品',
     legendTitle:'奖品构成',
     p1:'🧦 品牌袜子',p2:'🧴 防晒霜 50ml',p3:'☂️ 雨伞',
@@ -313,6 +319,7 @@ const L = {
     tabScratch:'🎁 ギフト',tabCoupon:'🏷 クーポン',tabStores:'📍 店舗',
     scLabel:'スクラッチカード',scTitle:'削ってギフトを確認',scSub:'レジでスタッフにご提示ください',
     scProg:p=>`${p}% 削り済み`,scReveal:'全部開ける',scReset:'もう一度 ↺',
+    scNotice:'景品の在庫がなくなった場合、同等の代替景品を提供することがあります。',
     scWon:'当選！',scResNote:'この画面をスタッフにご提示いただき<br>ギフトをお受け取りください',
     legendTitle:'景品内容',
     p1:'🧦 ブランドソックス',p2:'🧴 日焼け止め 50ml',p3:'☂️ 折りたたみ傘',
@@ -351,7 +358,7 @@ function changeLang(){
 function applyLang(){
   const t=L[lang];
   const ids=['hdrLang','hdrTagline','heroEyebrow','heroDesc','tabScratch','tabCoupon','tabStores',
-    'scLabel','scTitle','scSub','scWon','legendTitle','p1','p2','p3','p4',
+    'scLabel','scTitle','scSub','scWon','legendTitle','p1','p2','p3','p4','scNotice',
     'cpLabel','cpCondTitle','cp1','cp2','cp3','cp4','cp5',
     'regionBusan','regionJeju','storeNote','s1','s2','s3','s4','s5','s6','s7','s8'];
   ids.forEach(id=>{if(document.getElementById(id))document.getElementById(id).textContent=t[id]||'';});
